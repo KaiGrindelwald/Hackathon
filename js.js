@@ -70,7 +70,16 @@ function loadOrderForm() {
     // Handle form submission
     form.onsubmit = function(event) {
         event.preventDefault();
-        console.log('Order placed:', menuItemSelect.value, quantityInput.value, timeInput.value);
-        // Add logic to handle form submission
+        form.onsubmit = function(event) {
+            event.preventDefault();
+        
+            // Capture form data and redirect to the payment page
+            const menuItemId = menuItemSelect.value;
+            const quantity = quantityInput.value;
+            const pickupTime = timeInput.value;
+        
+            window.location.href = `payment.html?menuItemId=${menuItemId}&quantity=${quantity}&pickupTime=${pickupTime}`;
+        };
+        
     };
 }

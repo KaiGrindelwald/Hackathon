@@ -1,3 +1,24 @@
+function confirmPayment() {
+    // Simulate payment processing logic
+    console.log('Processing payment...');
+
+    // Mock delay to simulate payment processing
+    setTimeout(() => {
+        // Logic after 'payment' is 'processed'
+        console.log('Payment confirmed');
+
+        // Display a success message
+        const successMessage = document.createElement('p');
+        successMessage.textContent = 'Thank you! Your payment has been confirmed.';
+        document.body.appendChild(successMessage);
+
+        // Optionally, redirect to a success page after a delay
+        // setTimeout(() => {
+        //     window.location.href = 'success.html';
+        // }, 3000); // Redirect after 3 seconds
+    }, 1000); // Mock processing delay of 2 seconds
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Option 1: Retrieve Query Parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -23,4 +44,6 @@ function displayOrderSummary(menuItemId, quantity, pickupTime) {
     orderSummaryDiv.innerHTML = `Order Summary:<br>Item ID: ${menuItemId}<br>Quantity: ${quantity}<br>Pickup Time: ${pickupTime}`;
     // Add more detailed summary based on your application's requirements
 }
+
+
 //new comment to check git push
