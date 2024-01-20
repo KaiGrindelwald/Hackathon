@@ -1,7 +1,8 @@
 function confirmPayment() {
     // Simulate payment processing logic
     console.log('Processing payment...');
-
+    // Find the confirm payment button
+    const confirmButton = document.querySelector('button[onclick="confirmPayment()"]');
     // Mock delay to simulate payment processing
     setTimeout(() => {
         // Logic after 'payment' is 'processed'
@@ -10,12 +11,11 @@ function confirmPayment() {
         // Display a success message
         const successMessage = document.createElement('p');
         successMessage.textContent = 'Thank you! Your payment has been confirmed.';
+        // Hide the confirm payment button after it has been pressed once
         document.body.appendChild(successMessage);
-
-        // Optionally, redirect to a success page after a delay
-        // setTimeout(() => {
-        //     window.location.href = 'success.html';
-        // }, 3000); // Redirect after 3 seconds
+        if (confirmButton) {
+            confirmButton.style.display = 'none';
+        }
     }, 1000); // Mock processing delay of 2 seconds
 }
 
