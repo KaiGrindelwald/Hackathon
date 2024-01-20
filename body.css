@@ -22,13 +22,25 @@ body {
 #menu {
     margin-bottom: 30px;
     color :#72abb1;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #menu div {
     padding: 10px;
     border-bottom: 3px solid #f7c297;
+    box-sizing: border-box;
+    width: calc(50% - 5px); /* 50% width with a small margin between items */
+    padding: 10px;
+    border-bottom: 3px solid #f7c297;
+    text-align: center;
 }
 
+#menu div:nth-child(odd) {
+    margin-right: 10px; /* Adjust the margin between items as needed */
+} 
 #orderForm {
     margin-top: 30px;
 }
