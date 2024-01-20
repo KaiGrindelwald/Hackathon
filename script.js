@@ -17,6 +17,9 @@ function authenticateUser(action, username, password) {
     .then(data => {
       if (data.success) {
         alert(`${action.charAt(0).toUpperCase() + action.slice(1)} successful`);
+        if (data.redirect) {
+          window.location.href = data.redirect;
+        }
       } else {
         alert(`Failed to ${action}: ${data.message}`);
       }

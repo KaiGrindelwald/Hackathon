@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OPS.com</title>
+  <title>Login System</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -39,6 +39,7 @@
       border: 1px solid #41B3A3;
       border-radius: 4px;
       font-size: 16px;
+      color: #41B3A3;
     }
 
     button {
@@ -46,7 +47,7 @@
       color: #ffecb8;
       padding: 12px;
       border: none;
-      border-radius: 40px; /* Updated border-radius */
+      border-radius: 40px;
       cursor: pointer;
       font-size: 20px;
     }
@@ -86,10 +87,9 @@
       <br>
       <button type="button" onclick="submitLoginForm()">Login</button>
     </form>
-
     <p class="register-link">Not registered? <a href="#" onclick="toggleForms()">Register now</a></p>
   </div>
-
+  
   <div id="registerFormDiv" style="display: none;">
     <form id="registerForm">
       <label for="registerUsername">Username:</label>
@@ -98,9 +98,11 @@
       <label for="registerPassword">Password:</label>
       <input type="password" id="registerPassword" required>
       <br>
+      <label for="registerEmail">Email:</label>
+      <input type="email" id="registerEmail" required>
+      <br>
       <button type="button" onclick="submitRegisterForm()">Register</button>
     </form>
-
     <p class="register-link">Already have an account? <a href="#" onclick="toggleForms()">Login</a></p>
   </div>
 

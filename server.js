@@ -30,13 +30,14 @@ app.get('/login', (req, res) => {
     // Check if the provided credentials match any user in the file
     const isValidUser = users.some(user => user[0] === username && user[1] === password);
 
-    res.json({ success: isValidUser });
+    res.json({ success: isValidUser, redirect: isValidUser ? '/html.html' : null });
   });
 });
 
-app.get('/register', (req, res) => {
-  const username = req.query.username;
-  const password = req.query.password;
+app.post('/register', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const email = req.body.email;
 
   // Read user.txt file
   fs.readFile('user.txt', 'utf8', (err, data) => {
@@ -55,7 +56,7 @@ app.get('/register', (req, res) => {
       res.json({ success: false, message: 'Username is already taken' });
     } else {
       // Append the new user to the file
-      fs.appendFile('user.txt', `${username},${password}\n`, 'utf8', (err) => {
+      fs.appendFile('user.txt', `${username},${password},${email}\n`, 'utf8', (err) => {
         if (err) {
           console.error('Error writing to user.txt:', err);
           res.json({ success: false, message: 'Internal server error' });
