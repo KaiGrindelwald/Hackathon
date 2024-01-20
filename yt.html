@@ -1,42 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content = "width-device-width,initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login System</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #41B3A3;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-    <title>OPS.com</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    #loginFormDiv, #registerFormDiv {
+      width: 300px;
+      background-color: #F6A6B2;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #41B3A3;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #41B3A3;
+      color: #ffecb8;
+      padding: 12px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    button:hover {
+      background-color: #ffecb8;
+      color: #41B3A3;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .forgot-password {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    a {
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .register-link {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
-        <form action="">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input type="text" placeholder="Username" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class='bx bxs-lock' ></i>
-            </div>
+  <div id="loginFormDiv">
+    <form id="loginForm">
+      <label for="loginUsername">Username:</label>
+      <input type="text" id="loginUsername" required>
+      <br>
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" required>
+      <br>
+      <div class="remember-forgot" style="height: 50px;">
+        <label style="height: 1%;"><input type="checkbox"> Remember me</label>
+        <a href="#" class="forgot-password">Forgot password</a>
+      </div>
+      <button type="button" onclick="submitLoginForm()">Login</button>
+    </form>
 
-            <div class="remember-forgot">
-                <label><input type="checkbox">Remember me</label>
-                <a href="#">Forgot password</a>
-            </div>
+    <p class="register-link">Not registered? <a href="#" onclick="toggleForms()">Register now</a></p>
+  </div>
 
-            <button type="submit" class="btn">Login</button>
+  <div id="registerFormDiv" style="display: none;">
+    <form id="registerForm">
+      <label for="registerUsername">Username:</label>
+      <input type="text" id="registerUsername" required>
+      <br>
+      <label for="registerPassword">Password:</label>
+      <input type="password" id="registerPassword" required>
+      <br>
+      <button type="button" onclick="submitRegisterForm()">Register</button>
+    </form>
 
-            <div class="register-link">
-                <p>Don't have an account?<a href="#">Register</a></p>
+    <p class="register-link">Already have an account? <a href="#" onclick="toggleForms()">Login</a></p>
+  </div>
 
-            </div>
-
-        </form>
-
-    </div>
-    
+  <script src="script.js"></script>
 </body>
 </html>
