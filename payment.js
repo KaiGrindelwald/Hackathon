@@ -11,7 +11,7 @@ function confirmPayment() {
         // Display a success message
         const successMessage = document.createElement('p');
         successMessage.textContent = 'Thank you! Your payment has been confirmed.';
-        successMessage.style.color = '#7dcdb5';
+        successMessage.style.color = 'black';
         document.body.appendChild(successMessage);
         if (confirmButton) {
             confirmButton.style.display = 'none';
