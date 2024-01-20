@@ -82,7 +82,9 @@ function loadOrderForm() {
     // Add a dropdown for menu items
     const menuItemSelect = document.createElement('select');
     menuItemSelect.name = 'menuItem';
-    menuItemSelect.id = 'menuItemSelect'; // Set the id for reference
+    menuItemSelect.id = 'menuItemSelect';
+    menuItemSelect.style.width = '320px'; // Set the width inline
+    menuItemSelect.style.padding = '8px'; // Set the id for reference
     canteenMenus[canteenSelect.value].forEach(item => {
         const option = document.createElement('option');
         option.value = item.id;
@@ -93,6 +95,9 @@ function loadOrderForm() {
 
     // Input for quantity
     const quantityInput = document.createElement('input');
+    quantityInput.id = 'quantityInput.id';
+    quantityInput.style.width = '300px'; // Set the width inline
+    quantityInput.style.padding = '8px';
     quantityInput.type = 'number';
     quantityInput.name = 'quantity';
     quantityInput.min = 1;
