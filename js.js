@@ -1,42 +1,68 @@
 document.addEventListener('DOMContentLoaded', function() {
-    loadMenu();
-    loadOrderForm();
+    loadOrderForm(); // Start by loading the order form
 });
 
-const menuItems = [
-    { id: 1, name: 'Noodles', price: 2.5 },
-    { id: 2, name: 'Sandwich', price: 3.0 },
-    { id: 3, name: 'Noodles', price: 2.5 },
-    { id: 4, name: 'Sandwich', price: 3.0 },
-    { id: 5, name: 'Noodles', price: 2.5 },
-    { id: 6, name: 'Sandwich', price: 3.0 },
-    { id: 7, name: 'Noodles', price: 2.5 },
-    { id: 8, name: 'Sandwich', price: 3.0 },
-    // ... more items
-];
+const canteenMenus = {
+    'Canteen 1': [
+        { id: 1, name: 'Noodles', price: 2.5 },
+        { id: 2, name: 'Sandwich', price: 3.0 },
+        // ... more items for Canteen 1
+    ],
+    'Canteen 2': [
+        { id: 3, name: 'Pizza', price: 4.0 },
+        { id: 4, name: 'Burger', price: 3.5 },
+        // ... more items for Canteen 2
+    ],
+    'Canteen 3': [
+        { id: 5, name: 'Salad', price: 2.0 },
+        { id: 6, name: 'Soup', price: 1.5 },
+        // ... more items for Canteen 3
+    ]
+    // ... add more canteens if needed
+};
 
-function loadMenu() {
+function loadMenu(canteenName) {
+    const menuItems = canteenMenus[canteenName];
     const menuDiv = document.getElementById('menu');
+    menuDiv.innerHTML = ''; // Clear previous menu items
+
     menuItems.forEach(item => {
         const menuItem = document.createElement('div');
-        menuItem.innerHTML = `<h3>${item.name}<br>$${item.price}</h3>`;  // Corrected line
+        menuItem.innerHTML = `<h3>${item.name}<br>$${item.price}</h3>`;
         menuDiv.appendChild(menuItem);
     });
 }
 
 function loadOrderForm() {
     const orderDiv = document.getElementById('orderForm');
-
-    // Clear previous content
     orderDiv.innerHTML = '';
 
-    // Create form element
+    // Create a dropdown for canteen selection
+    const canteenSelect = document.createElement('select');
+    canteenSelect.id = 'canteenSelect';
+    for (const canteen in canteenMenus) {
+        const option = document.createElement('option');
+        option.value = canteen;
+        option.textContent = canteen;
+        canteenSelect.appendChild(option);
+    }
+    orderDiv.appendChild(canteenSelect);
+
+    // Load the menu for the initially selected canteen
+    loadMenu(canteenSelect.value);
+
+    // Event listener for canteen selection change
+    canteenSelect.addEventListener('change', function() {
+        loadMenu(this.value);
+    });
+
+    // Create the order form
     const form = document.createElement('form');
 
-    // Add a dropdown or list for menu items
+    // Add a dropdown for menu items
     const menuItemSelect = document.createElement('select');
     menuItemSelect.name = 'menuItem';
-    menuItems.forEach(item => {
+    canteenMenus[canteenSelect.value].forEach(item => {
         const option = document.createElement('option');
         option.value = item.id;
         option.textContent = item.name;
@@ -70,16 +96,17 @@ function loadOrderForm() {
     // Handle form submission
     form.onsubmit = function(event) {
         event.preventDefault();
-        form.onsubmit = function(event) {
-            event.preventDefault();
-        
-            // Capture form data and redirect to the payment page
-            const menuItemId = menuItemSelect.value;
+    
+        const selectedMenuItem = canteenMenus[canteenSelect.value].find(item => item.id.toString() === menuItemSelect.value);
+        if (selectedMenuItem) {
+            const menuItemId = selectedMenuItem.id;
+            const menuItemName = selectedMenuItem.name;
+            const menuItemPrice = selectedMenuItem.price;
             const quantity = quantityInput.value;
             const pickupTime = timeInput.value;
-        
-            window.location.href = `payment.html?menuItemId=${menuItemId}&quantity=${quantity}&pickupTime=${pickupTime}`;
-        };
-        
+            
+            window.location.href = `payment.html?menuItemId=${menuItemId}&menuName=${encodeURIComponent(menuItemName)}&price=${menuItemPrice}&quantity=${quantity}&pickupTime=${pickupTime}`;
+        }
     };
+    
 }

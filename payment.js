@@ -23,13 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Option 1: Retrieve Query Parameters
     const urlParams = new URLSearchParams(window.location.search);
     const menuItemId = urlParams.get('menuItemId');
-    const quantity = urlParams.get('quantity');
+    const menuName = urlParams.get('menuName');
+    const price = parseFloat(urlParams.get('price'));
+    const quantity = parseInt(urlParams.get('quantity'), 10);
     const pickupTime = urlParams.get('pickupTime');
 
-    // Option 2: Retrieve from Session Storage
-    // const orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
-
-    displayOrderSummary(menuItemId, quantity, pickupTime);
+    displayOrderSummary(menuItemId, menuName, price, quantity, pickupTime);
 
     // Add payment processing logic here
     document.getElementById('confirmPayment').addEventListener('click', function() {
@@ -39,10 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function displayOrderSummary(menuItemId, quantity, pickupTime) {
+function displayOrderSummary(menuItemId, menuName, price, quantity, pickupTime) {
     const orderSummaryDiv = document.getElementById('orderSummary');
-    orderSummaryDiv.innerHTML = `Order Summary:<br>Item ID: ${menuItemId}<br>Quantity: ${quantity}<br>Pickup Time: ${pickupTime}`;
-    // Add more detailed summary based on your application's requirements
+    const totalPrice = price * quantity;
+
+    orderSummaryDiv.innerHTML = `
+        Order Summary:<br>
+        Item Name: ${decodeURIComponent(menuName)}<br>
+        Quantity: ${quantity}<br>
+        Price per item: $${price.toFixed(2)}<br>
+        Total Cost: $${totalPrice.toFixed(2)}<br>
+        Pickup Time: ${pickupTime}
+    `;
 }
 
 
