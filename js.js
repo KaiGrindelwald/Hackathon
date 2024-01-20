@@ -31,7 +31,27 @@ function loadMenu(canteenName) {
         menuItem.innerHTML = `<h3>${item.name}<br>$${item.price}</h3>`;
         menuDiv.appendChild(menuItem);
     });
+
+    // Update the menu items dropdown
+    updateMenuItemDropdown(canteenName);
 }
+
+function updateMenuItemDropdown(canteenName) {
+    const menuItemSelect = document.getElementsByName('menuItem')[0];
+
+    // Check if menuItemSelect exists before updating
+    if (menuItemSelect) {
+        menuItemSelect.innerHTML = '';
+
+        canteenMenus[canteenName].forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.id;
+            option.textContent = item.name;
+            menuItemSelect.appendChild(option);
+        });
+    }
+}
+
 
 function loadOrderForm() {
     const orderDiv = document.getElementById('orderForm');
@@ -62,6 +82,7 @@ function loadOrderForm() {
     // Add a dropdown for menu items
     const menuItemSelect = document.createElement('select');
     menuItemSelect.name = 'menuItem';
+    menuItemSelect.id = 'menuItemSelect'; // Set the id for reference
     canteenMenus[canteenSelect.value].forEach(item => {
         const option = document.createElement('option');
         option.value = item.id;
@@ -96,7 +117,7 @@ function loadOrderForm() {
     // Handle form submission
     form.onsubmit = function(event) {
         event.preventDefault();
-    
+
         const selectedMenuItem = canteenMenus[canteenSelect.value].find(item => item.id.toString() === menuItemSelect.value);
         if (selectedMenuItem) {
             const menuItemId = selectedMenuItem.id;
@@ -104,9 +125,8 @@ function loadOrderForm() {
             const menuItemPrice = selectedMenuItem.price;
             const quantity = quantityInput.value;
             const pickupTime = timeInput.value;
-            
+
             window.location.href = `payment.html?menuItemId=${menuItemId}&menuName=${encodeURIComponent(menuItemName)}&price=${menuItemPrice}&quantity=${quantity}&pickupTime=${pickupTime}`;
         }
     };
-    
 }

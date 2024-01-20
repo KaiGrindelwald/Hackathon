@@ -7,8 +7,36 @@ function submitLoginForm() {
 function submitRegisterForm() {
   var username = document.getElementById('registerUsername').value;
   var password = document.getElementById('registerPassword').value;
-  authenticateUser('register', username, password);
+  var email = document.getElementById('registerEmail').value;  // Add this line
+
+  // Send a request to the server to check the credentials or register
+  fetch(`http://localhost:4000/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      email: email,  // Add this line
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert(`Registration successful`);
+        if (data.redirect) {
+          window.location.href = data.redirect;
+        }
+      } else {
+        alert(`Failed to register: ${data.message}`);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
+
 
 function authenticateUser(action, username, password) {
   // Send a request to the server to check the credentials or register
