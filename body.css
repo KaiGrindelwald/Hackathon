@@ -4,24 +4,29 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color:darkslateblue;
+    background-color:#ffecb8;
 }
 
 #app {
     width: 80%;
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 5px solid #f6a6b2;
     border-radius: 8px;
+}
+
+#app h1 {
+    color:#7dcdb5
 }
 
 #menu {
     margin-bottom: 30px;
+    color :#72abb1;
 }
 
 #menu div {
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 3px solid #f7c297;
 }
 
 #orderForm {
@@ -41,20 +46,20 @@ form > * {
 }
 
 button {
-    background-color:black;
-    color: white;
+    background-color:#f6a6b2;
+    color: #ffecb8;
     border: none;
     padding: 10px 15px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    display:inline-block;
+    font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
 }
 
 button:hover {
-    background-color:white;
-    color:black;
+    background-color:#ffecb8;
+    color:	#f6a6b2;
 }
