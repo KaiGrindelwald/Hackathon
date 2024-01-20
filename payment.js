@@ -23,3 +23,4 @@ function displayOrderSummary(menuItemId, quantity, pickupTime) {
     orderSummaryDiv.innerHTML = `Order Summary:<br>Item ID: ${menuItemId}<br>Quantity: ${quantity}<br>Pickup Time: ${pickupTime}`;
     // Add more detailed summary based on your application's requirements
 }
+//new comment to check git push
