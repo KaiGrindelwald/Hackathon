@@ -16,7 +16,7 @@ function confirmPayment() {
         if (confirmButton) {
             confirmButton.style.display = 'none';
         }
-    }, 1000); // Mock processing delay of 2 seconds
+    }, 200); // Mock processing delay of 0.2 seconds
 }
 
 document.addEventListener('DOMContentLoaded', function() {
