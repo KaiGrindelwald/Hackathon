@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color:#ffecb8;
+    background-color: #41b3a3;
 }
 
 #app {
@@ -15,8 +15,21 @@ body {
     border-radius: 8px;
 }
 
+h1{
+    color:#ffecb8;
+    margin-top: 20px;
+
+}
+#orderSummary {
+    margin-top: 20px;
+    font-family: Lucida Grande;
+    font-size: 16px; /* Change this to the desired font size */
+    color:#ffecb8; /* Change this to the desired font color for the order summary text */
+}
+
 #app h1 {
-    color:#7dcdb5
+    color:#7dcdb5;
+    font-size: 300%;
 }
 
 #menu {
@@ -36,6 +49,7 @@ body {
     padding: 10px;
     border-bottom: 3px solid #f7c297;
     text-align: center;
+    color:#f6a6b2
 }
 
 #menu div:nth-child(odd) {
