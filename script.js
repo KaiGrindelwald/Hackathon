@@ -73,3 +73,7 @@ function toggleForms() {
     registerFormDiv.style.display = 'block';
   }
 }
+function forgotPassword() {
+  // Assuming you want to redirect to the otp.html page
+  window.location.href = '/otp.html';
+}
