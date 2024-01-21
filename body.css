@@ -5,6 +5,21 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #41b3a3;
+    background: linear-gradient(to bottom, #41b3a3,#235c54);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#app img {
+    max-width: 18%; /* Set maximum width to 100% of the container */
+    height: auto;    /* Maintain aspect ratio */
+    display: block;  /* Remove extra space below the image */
+    margin: 0 auto;
+    margin-bottom: 0;   /* Center the image horizontally */
+}
+
+#app h1{
+    margin-top: 0;
 }
 
 #app {
@@ -27,10 +42,26 @@ h1{
     color:#ffecb8; /* Change this to the desired font color for the order summary text */
 }
 
-#app h1 {
+
+h1 {
+    font-size: 80px;
+    text-transform: uppercase;
+    font-weight:bold;
+    font-family: 'Gambetta', serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
     color:#7dcdb5;
-    font-size: 300%;
-}
+    outline: none;
+    text-align: center;
+  }
+  
+  h1:hover {
+    font-variation-settings: "wght" 582; 
+    letter-spacing: 20px;
+  }
+
 
 #menu {
     margin-bottom: 30px;
