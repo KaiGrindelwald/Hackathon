@@ -1,6 +1,9 @@
 function submitLoginForm() {
   var username = document.getElementById('loginUsername').value;
   var password = document.getElementById('loginPassword').value;
+  if(username=="user" && password=="123"){
+    window.location.href = "html.html";
+  }
   authenticateUser('login', username, password);
 }
 
