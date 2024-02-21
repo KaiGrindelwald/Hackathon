@@ -1,10 +1,11 @@
 function submitLoginForm() {
   var username = document.getElementById('loginUsername').value;
   var password = document.getElementById('loginPassword').value;
-  if(username=="user" && password=="123"){
-    window.location.href = "html.html";
-  }
-  authenticateUser('login', username, password);
+  if (username == "user" && password == "1234") {
+            window.location.href = "index2.html";
+            alert("Welcome user");
+        }
+  // authenticateUser('login', username, password);
 }
 
 function submitRegisterForm() {
